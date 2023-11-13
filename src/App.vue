@@ -70,30 +70,17 @@
         </h1>
       </div>
     </div>
-<div class="task3">
-    <div class="kvadrat">
-      <div class="kvadrat">
-        <div class="kvadrat">
-          <div class="kvadrat">
-            <div class="kvadrat">
-              <div class="kvadrat">
-                <div class="kvadrat"><div class="kvadrat"></div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<set-kvadrat/>
   </div>
 </template>
 
 <script>
 import UiButton from "@/components/UI/UiButton.vue";
 import UiInput from "@/components/UI/UiInput.vue";
+import SetKvadrat from './components/SetKvadrat.vue';
 
 export default {
-  components: { UiButton, UiInput },
+  components: { UiButton, UiInput, SetKvadrat },
 
   data() {
     return {
@@ -316,26 +303,5 @@ td {
   margin-top: 100px;
 }
 
-.kvadrat {
-  width: 100px;
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid black;
-}
 
-.kvadrat > div {
-  width: 85%;
-  height: 85%;
-  border: 1px solid black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.task3 {
-  margin-top: 20px;
- 
-}
 </style>
