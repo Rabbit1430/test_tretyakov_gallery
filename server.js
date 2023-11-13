@@ -6,10 +6,12 @@ import mysql from "mysql2";
 const app = express();
 app.use(express.json());
 
+//Введите данные от mysql
+
 const database = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "Dima325671()))",
+  password: "",
   database: "gallery_test",
 });
 
