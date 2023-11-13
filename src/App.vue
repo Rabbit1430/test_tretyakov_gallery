@@ -1,7 +1,7 @@
 <!-- @format -->
 
 <template>
-  <div>
+  <div class="project">
     <div>
       <h2>Таблица</h2>
       <table>
@@ -70,7 +70,7 @@
         </h1>
       </div>
     </div>
-
+<div class="task3">
     <div class="kvadrat">
       <div class="kvadrat">
         <div class="kvadrat">
@@ -84,6 +84,7 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
 </template>
 
@@ -139,6 +140,10 @@ export default {
     },
 
     async addUser() {
+      if (!this.people.familya || !this.people.name || !this.people.surname) {
+    this.err = "Заполните все поля";
+    return;
+  }
       const adduser = "http://localhost:3000/users/add";
       try {
         const response = await fetch(adduser, {
@@ -166,7 +171,12 @@ export default {
     },
 
     async updateUser() {
+      if (!this.userSelect || !this.people.familya || !this.people.name || !this.people.surname) {
+    this.err = "Выберите пользователя";
+    return;
+  }
       const updateuser = "http://localhost:3000/users/update";
+      
       if (this.userSelect) {
         const user = {
           id: this.userSelect,
@@ -188,6 +198,7 @@ export default {
           } else {
             this.err = "";
             this.getUser();
+            this.userSelect = null
             this.people = {
               familya: "",
               name: "",
@@ -201,6 +212,10 @@ export default {
     },
 
     async deleteUser() {
+      if (!this.userSelect) {
+    this.err = "Выберите пользователя";
+    return;
+  }
       const deleteuser = `http://localhost:3000/users/delete/${this.userSelect}`;
       if (this.userSelect) {
         const user = this.userSelect;
@@ -216,6 +231,7 @@ export default {
           } else {
             this.err = "";
             this.getUser();
+            this.userSelect = null
             this.people = {
               familya: "",
               name: "",
@@ -266,6 +282,13 @@ export default {
 </script>
 
 <style scoped>
+
+.project{
+  width: 100%;
+  margin-left: 10%;
+ 
+
+}
 .btn_all {
   display: flex;
   gap: 10px;
@@ -273,10 +296,11 @@ export default {
 }
 .input_all {
   display: flex;
+  margin-top: 20px;
 }
 
 table {
-  width: 100%;
+  width: 70%;
   border-collapse: collapse;
   margin-top: 20px;
 }
@@ -308,5 +332,10 @@ td {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.task3 {
+  margin-top: 20px;
+ 
 }
 </style>
